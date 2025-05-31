@@ -1,23 +1,21 @@
 package com.loris.devicefleet.domain.repository;
 
-import com.loris.devicefleet.domain.DeviceDTO;
+import com.loris.devicefleet.domain.Device;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface DeviceRepository {
     // Methods to interact with the device repository
-    DeviceDTO save(DeviceDTO deviceDTO);
+    Device save(Device device);
 
-    Optional<DeviceDTO> findById(Long id);
+    Optional<Device> findById(Long id);
 
-    List<DeviceDTO> findAll();
+    List<Device> findAll();
 
-    List<DeviceDTO> findByBrand(String brand);
+    List<Device> findByBrand(String brand);
 
-    List<DeviceDTO> findByStatus(String status);
+    List<Device> findByStatus(String status);
 
     void deleteById(Long id);
-
-
 }

@@ -1,6 +1,6 @@
 package com.loris.devicefleet.adapters.persistence.mongo;
 
-import com.loris.devicefleet.domain.DeviceDTO;
+import com.loris.devicefleet.domain.Device;
 import com.loris.devicefleet.domain.repository.DeviceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -15,27 +15,27 @@ public class DeviceMongoRepository implements DeviceRepository {
     // maybe not necessary use DeviceMongoRepositoryImpl
 
     @Override
-    public DeviceDTO save(DeviceDTO deviceDTO) {
+    public Device save(Device device) {
         return null;
     }
 
     @Override
-    public Optional<DeviceDTO> findById(Long id) {
+    public Optional<Device> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public List<DeviceDTO> findAll() {
+    public List<Device> findAll() {
         return List.of();
     }
 
     @Override
-    public List<DeviceDTO> findByBrand(String brand) {
+    public List<Device> findByBrand(String brand) {
         return List.of();
     }
 
     @Override
-    public List<DeviceDTO> findByStatus(String status) {
+    public List<Device> findByStatus(String status) {
         return List.of();
     }
 

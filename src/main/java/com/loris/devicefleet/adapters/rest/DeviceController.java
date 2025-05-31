@@ -1,15 +1,15 @@
 package com.loris.devicefleet.adapters.rest;
 
-import com.loris.devicefleet.domain.DeviceDTO;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.loris.devicefleet.domain.Device;
+import com.loris.devicefleet.domain.model.Enums.DeviceStatusEnum;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequestMapping("/v1/api/devices")
 public class DeviceController {
 
     /*
@@ -26,12 +26,20 @@ public class DeviceController {
     *   DELETE:
     */
 
-    @PostMapping
-    ResponseEntity<DeviceDTO> createDevice(@RequestBody DeviceDTO deviceDTO) {
+    @PostMapping("/create")
+    ResponseEntity<Device> createDevice(@RequestBody Device device) {
 
-        return ResponseEntity.ok(deviceDTO);
+        return ResponseEntity.ok(device);
     }
 
+    @GetMapping("/fetchAll")
+    ResponseEntity<List<Device>> getAllDevices() {
+        List<Device> devices = List.of(
+                new Device(1L, "Device1", "BrandA", DeviceStatusEnum.AVAILABLE, LocalDateTime.now(), LocalDateTime.now()),
+                new Device(2L, "Device2", "BrandB", DeviceStatusEnum.INACTIVE, LocalDateTime.now(), LocalDateTime.now())
+        );
+        return ResponseEntity.ok(devices);
+    }
 
 
 
