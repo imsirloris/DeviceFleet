@@ -9,7 +9,6 @@ COPY gradle ./gradle
 COPY src ./src
 
 RUN chmod +x ./gradlew
-RUN ./gradlew build
-RUN JAR_NAME=$(cat jar-name.txt)
+RUN ./gradlew clean test jacocoTestReport build
 
 CMD ["sh", "-c", "java -jar build/libs/$(cat jar-name.txt)"]
