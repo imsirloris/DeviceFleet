@@ -1,6 +1,6 @@
-package com.loris.devicefleet.domain;
+package com.loris.devicefleet.domain.model;
 
-import com.loris.devicefleet.domain.model.Enums.DeviceStatusEnum;
+import com.loris.devicefleet.domain.model.enums.DeviceStatusEnum;
 
 import java.time.LocalDateTime;
 
