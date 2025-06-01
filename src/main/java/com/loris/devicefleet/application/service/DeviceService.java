@@ -2,7 +2,8 @@ package com.loris.devicefleet.application.service;
 
 import com.loris.devicefleet.adapters.persistence.mongo.DeviceMongoRepository;
 import com.loris.devicefleet.adapters.persistence.mongo.entity.DeviceEntity;
-import com.loris.devicefleet.application.dto.DeviceRequest;
+import com.loris.devicefleet.application.dto.CreateDeviceRequest;
+import com.loris.devicefleet.application.dto.UpdateDeviceRequest;
 import com.loris.devicefleet.application.dto.ApiMessage;
 import com.loris.devicefleet.application.mapper.DeviceMapper;
 import com.loris.devicefleet.domain.model.Device;
@@ -27,7 +28,7 @@ public class DeviceService {
     private final DeviceMapper mapper;
 
     @Transactional
-    public ResponseEntity<Device> createDevice(Device device) {
+    public ResponseEntity<Device> createDevice(CreateDeviceRequest device) {
         log.info("Creating new device: {} ", device);
 
         DeviceStatusEnum status = device.status() == null ? DeviceStatusEnum.AVAILABLE : device.status();
@@ -104,14 +105,14 @@ public class DeviceService {
     }
 
     @Transactional
-    public ResponseEntity<?> updateDevice(DeviceRequest deviceRequest) {
-        log.info("Updating deviceRequest: {}", deviceRequest);
+    public ResponseEntity<?> updateDevice(UpdateDeviceRequest updateDeviceRequest) {
+        log.info("Updating deviceRequest: {}", updateDeviceRequest);
 
         //check if the deviceRequest exists
-        Optional<DeviceEntity> existingDevice = repository.findById(deviceRequest.id());
+        Optional<DeviceEntity> existingDevice = repository.findById(updateDeviceRequest.id());
 
         if (existingDevice.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiMessage<>("Device not found with ID: " + deviceRequest.id() ));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiMessage<>("Device not found with ID: " + updateDeviceRequest.id() ));
         }
 
         if(existingDevice.get().status().equals(DeviceStatusEnum.IN_USE.getDescription())) {
@@ -122,9 +123,9 @@ public class DeviceService {
         // Update the deviceRequest fields
         DeviceEntity updateDevice = new DeviceEntity(
                 existingDevice.get().id(),
-                deviceRequest.name() != null ? deviceRequest.name() : existingDevice.get().name(),
-                deviceRequest.brand() != null ? deviceRequest.brand() : existingDevice.get().brand(),
-                deviceRequest.status() != null ? deviceRequest.status().getDescription() : existingDevice.get().status(),
+                updateDeviceRequest.name() != null ? updateDeviceRequest.name() : existingDevice.get().name(),
+                updateDeviceRequest.brand() != null ? updateDeviceRequest.brand() : existingDevice.get().brand(),
+                updateDeviceRequest.status() != null ? updateDeviceRequest.status().getDescription() : existingDevice.get().status(),
                 existingDevice.get().createdTime(),
                 null
         );

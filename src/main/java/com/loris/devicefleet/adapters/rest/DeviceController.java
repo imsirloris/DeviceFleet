@@ -1,6 +1,7 @@
 package com.loris.devicefleet.adapters.rest;
 
-import com.loris.devicefleet.application.dto.DeviceRequest;
+import com.loris.devicefleet.application.dto.CreateDeviceRequest;
+import com.loris.devicefleet.application.dto.UpdateDeviceRequest;
 import com.loris.devicefleet.application.service.DeviceService;
 import com.loris.devicefleet.domain.model.Device;
 import com.loris.devicefleet.domain.model.enums.DeviceStatusEnum;
@@ -32,7 +33,7 @@ public class DeviceController {
     */
 
     @PostMapping("/create")
-    ResponseEntity<Device> createDevice(@RequestBody Device device) {
+    ResponseEntity<Device> createDevice(@RequestBody CreateDeviceRequest device) {
         return deviceService.createDevice(device);
     }
 
@@ -54,7 +55,7 @@ public class DeviceController {
     }
 
     @PutMapping("/update")
-    ResponseEntity<?> updateDevice(@RequestBody DeviceRequest device) {
+    ResponseEntity<?> updateDevice(@RequestBody UpdateDeviceRequest device) {
         return deviceService.updateDevice(device);
     }
 

@@ -39,3 +39,11 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+tasks.register('printJarName') {
+    doLast {
+        file("jar-name.txt").text = "${bootJar.archiveFileName.get()}"
+    }
+}
+
+bootJar.finalizedBy printJarName
