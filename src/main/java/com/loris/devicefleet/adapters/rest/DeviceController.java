@@ -66,7 +66,6 @@ public class DeviceController {
 
     @DeleteMapping("/delete")
     ResponseEntity<?> deleteDevice(@RequestParam String id) {
-        log.info("Deleting device with ID: {}", id);
         return deviceService.deleteDevice(id);
     }
 }
