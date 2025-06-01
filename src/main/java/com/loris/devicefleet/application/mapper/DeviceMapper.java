@@ -16,6 +16,7 @@ public interface  DeviceMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdTime", ignore = true)
     @Mapping(target = "updatedTime", ignore = true)
+    @Mapping(target = "status", expression = "java(device.status().getDescription())")
     DeviceEntity toEntity(com.loris.devicefleet.domain.model.Device device);
 
     @Mapping(target = "status", expression = "java(com.loris.devicefleet.domain.model.enums.DeviceStatusEnum.fromDescription(deviceEntity.status()))")

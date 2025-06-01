@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum DeviceStatusEnum {
-    AVAILABLE("Available"),
-    IN_USE("In-Use"),
-    INACTIVE("Inactive");
+    AVAILABLE("AVAILABLE"),
+    IN_USE("IN-USE"),
+    INACTIVE("INACTIVE");
 
     private final String description;
 

@@ -6,7 +6,6 @@ import com.loris.devicefleet.application.mapper.DeviceMapper;
 import com.loris.devicefleet.domain.model.Device;
 import com.loris.devicefleet.domain.repository.DeviceRepository;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -50,6 +49,12 @@ public class DeviceMongoRepository implements DeviceRepository {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public DeviceEntity update(DeviceEntity device) {
+        return deviceSpringMongoRepository.save(device);
+    }
+
+    @Override
+    public void deleteById(String id) {
+        deviceSpringMongoRepository.deleteById(id);
     }
 }

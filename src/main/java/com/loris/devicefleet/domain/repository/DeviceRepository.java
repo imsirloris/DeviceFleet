@@ -2,7 +2,6 @@ package com.loris.devicefleet.domain.repository;
 
 import com.loris.devicefleet.adapters.persistence.mongo.entity.DeviceEntity;
 import com.loris.devicefleet.domain.model.Device;
-import org.bson.types.ObjectId;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,5 +20,7 @@ public interface DeviceRepository {
 
     Optional<List<DeviceEntity>> findByBrandAndStatus(String brand, String status);
 
-    void deleteById(Long id);
+    DeviceEntity update(DeviceEntity device);
+
+    void deleteById(String id);
 }
