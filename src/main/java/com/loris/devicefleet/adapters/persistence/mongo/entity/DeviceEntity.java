@@ -10,8 +10,7 @@ import java.time.Instant;
 
 @Document(collection = "devices")
 public record DeviceEntity(
-        @Id
-        ObjectId id,
+        @Id String id,
         String name,
         String brand,
         String status,

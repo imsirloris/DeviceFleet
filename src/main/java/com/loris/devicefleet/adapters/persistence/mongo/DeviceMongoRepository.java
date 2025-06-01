@@ -6,6 +6,7 @@ import com.loris.devicefleet.application.mapper.DeviceMapper;
 import com.loris.devicefleet.domain.model.Device;
 import com.loris.devicefleet.domain.repository.DeviceRepository;
 import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -24,27 +25,31 @@ public class DeviceMongoRepository implements DeviceRepository {
     }
 
     @Override
-    public Optional<DeviceEntity> findById(Long id) {
-        return Optional.empty();
+    public Optional<DeviceEntity> findById(String id) {
+        return deviceSpringMongoRepository.findById(id);
     }
 
     @Override
-    public List<DeviceEntity> findAll() {
-        return List.of();
+    public Optional<List<DeviceEntity>> findAll() {
+        return Optional.of(deviceSpringMongoRepository.findAll());
     }
 
     @Override
-    public List<DeviceEntity> findByBrand(String brand) {
-        return List.of();
+    public Optional<List<DeviceEntity>> findByBrand(String brand) {
+        return deviceSpringMongoRepository.findByBrand(brand);
     }
 
     @Override
-    public List<DeviceEntity> findByStatus(String status) {
-        return List.of();
+    public Optional<List<DeviceEntity>> findByStatus(String status) {
+        return deviceSpringMongoRepository.findByStatus(status);
+    }
+
+    @Override
+    public Optional<List<DeviceEntity>> findByBrandAndStatus(String brand, String status) {
+        return deviceSpringMongoRepository.findByBrandAndStatus(brand, status);
     }
 
     @Override
     public void deleteById(Long id) {
-
     }
 }
