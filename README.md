@@ -64,15 +64,15 @@ Device Fleet is a REST API designed for registering and managing devices.
    ./gradlew clean bootRun
    ```
 
-4. **Run with Docker** (requires Docker & Docker Compose):
+3. **Run with Docker** (requires Docker & Docker Compose):
 
    ```bash
    docker-compose up --build
    ```
 
-5. The API will be available at **[http://localhost:8080/](http://localhost:8080/)**
+4. The API will be available at **[http://localhost:8080/](http://localhost:8080/)**
 
-6. Swagger UI can be accessed at **[http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)**
+5. Swagger UI can be accessed at **[http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)**
 
 ---
 
