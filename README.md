@@ -62,7 +62,7 @@ Device Fleet is a REST API designed for registering and managing devices.
 
    ```bash
    ./gradlew build
-   ./gradlew clean bootRun
+   ./gradlew bootRun
    ```
 
    - **with Docker** (requires Docker & Docker Compose):
