@@ -57,14 +57,15 @@ Device Fleet is a REST API designed for registering and managing devices.
    MONGO_PASSWORD= # MongoDB password
    ```
 
-3. **Run without Docker** (be sure MongoDB is up):
+3. **Run** 
+   - **without Docker** (be sure MongoDB is up):
 
    ```bash
    ./gradlew build
    ./gradlew clean bootRun
    ```
 
-3. **Run with Docker** (requires Docker & Docker Compose):
+   - **with Docker** (requires Docker & Docker Compose):
 
    ```bash
    docker-compose up --build
